@@ -4,7 +4,8 @@
 }
 .logo_text1 {
   font-size: 18px;
-  color: rgb(246, 246, 246);
+  color: rgb(19, 58, 233);
+
 }
 .hZcQXZ {
   font-size: 23px !important;
@@ -42,7 +43,7 @@
   border: 1px solid white;
 }
 .gPLhoV {
-  background-color: white !important;
+  background: rgb(69, 101, 241) !important;
   fill: rgb(14, 49, 248) !important;
 }
 .gPLhoV:disabled {
@@ -74,6 +75,13 @@
 }
 .container-dashboard{
   padding: 30px;
+}
+.MuiInputBase-root {
+  background: rgb(69, 101, 241);
+}
+.MuiButton-root {
+  background: rgb(69, 101, 241)!important;
+
 }
 @media (max-width: 960px) {
   .spinnner1 {

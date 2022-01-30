@@ -68,15 +68,15 @@ const TopData = () => {
 
     setSearch(newFilter);
   };
-  useEffect(() => {
-    if (data.length > 0) {
-      let field = new Set();
+  // useEffect(() => {
+  //   if (data.length > 0) {
+  //     let field = new Set();
 
-      data.map((e) => field.add(e.category));
+  //     data.map((e,key) => field.add(e.category));
 
-      setCategory(field);
-    }
-  }, [data]);
+  //     setCategory(field);
+  //   }
+  // }, [data]);
 
   useEffect(() => {
     setFlag("true");
@@ -95,8 +95,8 @@ const TopData = () => {
 
   const columns = [
     {
-      selector: "Item",
-      cell: (selector) => (
+     selector: ()=>"Item",
+      cell: selector => (
         <img
           src={selector.Item[0]}
           width="35"
@@ -107,12 +107,12 @@ const TopData = () => {
       sortable: true,
     },
     {
-      selector: "topbuyer",
+     selector: ()=>"topbuyer",
 
       sortable: true,
     },
     {
-      selector: "price",
+     selector: ()=>"price",
       sortable: true,
     },
   ];

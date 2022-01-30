@@ -76,15 +76,14 @@ const Table = () => {
 
     setSearch(newFilter);
   };
-  useEffect(() => {
-    if (data.length > 0) {
-      let field = new Set();
+  // useEffect(() => {
+  //   if (data.length > 0) {
+  //     let field = new Set();
 
-      data.map((e) => field.add(e.category));
-
-      setCategory(field);
-    }
-  }, [data]);
+  //     data.map((e) => field.add(e.category));
+  //     setCategory(field);
+  //   }
+  // }, [data]);
 
   useEffect(() => {
     setFlag("true");
@@ -104,9 +103,12 @@ const Table = () => {
   const columns = [
     {
       name: "Buyer",
-      selector: "buyer",
-      cell: (selector) => (
+      selector: ()=>{
+        return "buyer"
+      },
+      cell: (selector, k) => [
         <select
+          key = {k}
           style={{
             backgroundColor: "transparent",
             border: "none",
@@ -114,22 +116,22 @@ const Table = () => {
             fontSize: "18px",
           }}
         >
-          {selector.buyer.map((data, index) => (
-            <option style={{ color: "black" }}>{data}</option>
+          {selector.buyer.map((data, key) => (
+            <option key={key} style={{ color: "black" }}>{data}</option>
           ))}
         </select>
-      ),
+      ],
       sortable: true,
     },
     {
       name: "type",
-      selector: "type",
+      selector: ()=>"type",
       sortable: true,
     },
     {
       name: "Item",
-      selector: "Item",
-      cell: (selector) => (
+      selector: ()=>"Item",
+      cell: selector => (
         <div style={{ display: "flex" }}>
           <img
             src={selector.Item[0]}
@@ -145,15 +147,15 @@ const Table = () => {
     },
     {
       name: "price",
-      selector: "price",
+      selector: ()=>"price",
       sortable: true,
     },
     {
       name: "time",
-      selector: "time",
+      selector: ()=>"time",
       sortable: true,
     },
-  ];
+  ]
   return (
     <div className="container-dashboard" >
       <br />
@@ -162,7 +164,7 @@ const Table = () => {
 
       <Grid container>
         {flag == "true" ? (
-          <Grid xs={12} md={6} className="table_left">
+          <Grid item xs={12} md={6} className="table_left">
             <div
               className="spinnner"
            
@@ -176,17 +178,17 @@ const Table = () => {
             </div>
           </Grid>
         ) : (
-          <Grid xs={12} md={6} lg={6} className="table_left">
+          <Grid item xs={12} md={6} lg={6} className="table_left">
             <Card
               style={{ background: "rgba(46, 44, 44, 0.682)", padding: "10px" }}
             >
               <br />
 
               <Grid container spacing={3} className="table_header">
-                <Grid item xs={12} sm={12} lg={4}>
+                <Grid item item xs={12} sm={12} lg={4}>
                   <span className="logo_text">Recent Whale Purcase</span>
                 </Grid>
-                <Grid item xs={6} sm={3} lg={2}>
+                <Grid item item xs={6} sm={3} lg={2}>
                   <FormControl fullWidth variant="outlined" size="small">
                     <InputLabel htmlFor="searchByName" className="search-label">
                      Item
@@ -199,7 +201,7 @@ const Table = () => {
                     />
                   </FormControl>
                 </Grid>
-                <Grid item xs={6} sm={3} lg={2}>
+                <Grid item item xs={6} sm={3} lg={2}>
                   <FormControl fullWidth variant="outlined" size="small">
                     <InputLabel htmlFor="searchByName" className="search-label">
                      Price
@@ -212,7 +214,7 @@ const Table = () => {
                     />
                   </FormControl>
                 </Grid>
-                <Grid item xs={6} sm={3} lg={2}>
+                <Grid item item xs={6} sm={3} lg={2}>
                   <FormControl fullWidth variant="outlined" size="small">
                     <InputLabel htmlFor="searchByName" className="search-label">
                       List
@@ -225,7 +227,7 @@ const Table = () => {
                     />
                   </FormControl>
                 </Grid>
-                <Grid item xs={6} sm={3} lg={3} lg={2}>
+                <Grid item item xs={6} sm={3} lg={3} lg={2}>
                   <Button onClick={Rendering} className="search_btn_load">
                     <AutorenewIcon />
                   </Button>
@@ -243,8 +245,8 @@ const Table = () => {
             </Card>
           </Grid>
         )}
-        <Grid xs={12} md={1} lg={2}></Grid>
-        <Grid xs={12} md={5} lg={4} className="table_right">
+        <Grid item xs={12} md={1} lg={2}></Grid>
+        <Grid item xs={12} md={5} lg={4} className="table_right">
           <TopData />
         </Grid>
       </Grid>
