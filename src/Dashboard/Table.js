@@ -125,7 +125,10 @@ const Table = () => {
     },
     {
       name: "type",
-      selector: ()=>"type",
+      selector: ()=>{"type"},
+      cell: (selector, k) => [
+        <div key={k}>{selector.type}</div>
+      ],
       sortable: true,
     },
     {
@@ -148,11 +151,17 @@ const Table = () => {
     {
       name: "price",
       selector: ()=>"price",
+      cell: (selector, k) => [
+        <div key={k}>{selector.price}</div>
+      ],
       sortable: true,
     },
     {
       name: "time",
       selector: ()=>"time",
+      cell: (selector, k) => [
+        <div key={k}>{selector.time}</div>
+      ],
       sortable: true,
     },
   ]

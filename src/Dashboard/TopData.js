@@ -108,11 +108,16 @@ const TopData = () => {
     },
     {
      selector: ()=>"topbuyer",
-
+     cell: (selector, k) => [
+      <div key={k}>{selector.topbuyer}</div>
+    ],
       sortable: true,
     },
     {
      selector: ()=>"price",
+     cell: (selector, k) => [
+      <div key={k}>{selector.price}</div>
+    ],
       sortable: true,
     },
   ];
