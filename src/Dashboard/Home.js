@@ -15,8 +15,10 @@ const Home = () => {
         <br />
         <br />
         <Grid container >
-          <Grid item xs={6} md={4} lg={2}>
+          <Grid item xs={6} md={4} lg={2} >
+            <div className="logo_position">
             <img className="img_logo" src={logo} />
+            </div>
           </Grid>
           <Grid item xs={6} md={4} lg={2}>
             <div className="text_wallet_tracker">WALLET TRACKER</div>
@@ -61,7 +63,7 @@ const Home = () => {
           </Grid>
         </Grid>
         <br /> <br /> <br />
-        <div style={{ marginLeft: "10%" }}>
+        <div style={{ marginLeft: "5%" }}>
           <Grid container>
             <Grid item xs={12} md={8} lg={6}>
               <div className="text_big_nft">THE NFT</div>

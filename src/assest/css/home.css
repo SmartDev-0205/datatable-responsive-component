@@ -20,8 +20,8 @@
 }
 .img_vector {
   border-radius: 2.57301px;
-  width: 100%;
- 
+  width: 87%;
+  margin-left: 13%;
 }
 .text_lavish_whale {
   font-size: 24px;
@@ -88,6 +88,9 @@
 
   color: #636363;
 }
+.logo_position {
+  text-align: center;
+}
 .text_big_terminal {
   font-family: -webkit-pictograph;
   font-style: normal;
@@ -110,7 +113,6 @@
   background: #ffffff;
   border-radius: 76px;
   padding: 15px 45px;
-
 }
 
 .MuiGrid-justify-content-xs-center {
@@ -217,7 +219,8 @@
     width: 210px;
     height: 150px;
   }
-  .text_big_nft,.text_big_terminal{
+  .text_big_nft,
+  .text_big_terminal {
     font-size: 70px;
   }
 }
@@ -225,7 +228,8 @@
   .img_logo {
     width: 150px;
   }
-  .text_big_nft,.text_big_terminal{
+  .text_big_nft,
+  .text_big_terminal {
     font-size: 60px;
   }
   .text_must_own,
@@ -260,7 +264,8 @@
   .img_nft {
     width: 300px;
   }
-  .text_big_nft,.text_big_terminal{
+  .text_big_nft,
+  .text_big_terminal {
     font-size: 50px;
   }
   /* .img_vector {
