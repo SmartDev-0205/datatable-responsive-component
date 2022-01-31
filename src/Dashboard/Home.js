@@ -98,7 +98,6 @@ const Home = () => {
               <div className="text_powered">
                 Powered by Lavish Whale Society
               </div>{" "}
-              <br /> <br /> <br /> <br />
             </Grid>
           </Grid>
           <br /> <br />

@@ -1,6 +1,6 @@
 .header_div_grp{
     display: flex;
-    background-color: rgba(1, 6, 32, 0.979);
+    background-color: rgb(29, 29, 29);
     border-radius: 10px;
     padding: 15px;
     width: 200px;
@@ -16,7 +16,7 @@
 .header_div_grp .div_price{
     font-size: 23px;
 
-    color: rgb(18, 211, 0);
+    color: rgb(17, 121, 8);
 }
 .header_img{
     border-radius: 50%;
