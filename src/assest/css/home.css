@@ -3,7 +3,7 @@
   background-color: black;
 }
 .text_wallet_tracker {
-  font-family: Lato;
+  font-family: -webkit-pictograph;
   font-style: normal;
   font-weight: 900;
   font-size: 22px;
@@ -31,7 +31,7 @@
   display: flex;
 }
 .text_powered {
-  font-family: Lato;
+  font-family: -webkit-pictograph;
   font-style: normal;
   font-weight: 900;
   font-size: 24px;
@@ -41,7 +41,7 @@
   color: #7c7c7c;
 }
 .text_big_nft {
-  font-family: Lato;
+  font-family: -webkit-pictograph;
   font-style: normal;
   font-weight: 900;
   font-size: 88.4029px;
@@ -52,7 +52,7 @@
   margin-left: 40%;
 }
 .text_small_blockchain {
-  font-family: Lato;
+  font-family: -webkit-pictograph;
   font-style: normal;
   font-weight: 900;
   font-size: 28px;
@@ -61,7 +61,7 @@
   color: #7c7c7c;
 }
 .span_solana {
-  font-family: Lato;
+  font-family: -webkit-pictograph;
   font-style: normal;
   font-weight: 900;
   font-size: 36px;
@@ -70,7 +70,7 @@
   color: #ffffff;
 }
 .div_price {
-  font-family: Lato;
+  font-family: -webkit-pictograph;
   font-style: normal;
   font-weight: 900;
   font-size: 32px;
@@ -79,7 +79,7 @@
   color: #ffffff;
 }
 .span_sol {
-  font-family: Lato;
+  font-family: -webkit-pictograph;
   font-style: normal;
   font-weight: 900;
   font-size: 24px;
@@ -89,7 +89,7 @@
   color: #636363;
 }
 .text_big_terminal {
-  font-family: Lato;
+  font-family: -webkit-pictograph;
   font-style: normal;
   font-weight: 900;
   font-size: 88.4029px;
