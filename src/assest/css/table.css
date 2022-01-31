@@ -86,13 +86,13 @@
 }
 @media (max-width: 1260px) {
   .spinnner1 {
-    top: 290%;
-    right: 50%;
+    top: 150%;
+    right: 15%;
   }
   .spinnner {
     position: absolute;
-    top: 190%;
-    left: 30%;
+    top: 150%;
+    left: 20%;
   }
 }
 
@@ -100,6 +100,15 @@
   .spinnner1 {
     top: 150%;
     right: 50%;
+  }
+  .spinnner1 {
+    top: 230%;
+    right: 50%;
+  }
+  .spinnner {
+    position: absolute;
+    top: 230%;
+    left: 50%;
   }
 }@media (max-width: 600px) {
   .spinnner1 {
