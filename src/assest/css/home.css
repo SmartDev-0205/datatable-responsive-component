@@ -6,7 +6,7 @@
   font-family: -webkit-pictograph;
   font-style: normal;
   font-weight: 900;
-  font-size: 22px;
+  font-size: 16px;
   line-height: 26px;
   color: #ffffff;
   margin-top: 40px;
@@ -17,6 +17,8 @@
   font-size: 24px;
   color: #ffffff;
   letter-spacing: 2px;
+  font-family: system-ui;
+  font-weight: 500;
 }
 .img_vector {
   border-radius: 2.57301px;
@@ -26,6 +28,8 @@
 .text_lavish_whale {
   font-size: 24px;
   color: #44ff40;
+  font-family: system-ui;
+  font-weight: 500;
 }
 .text_header_grp {
   display: flex;
@@ -60,14 +64,14 @@
 
   color: #7c7c7c;
 }
-.text_small_blockchain span{
-  color: white!important;
+.text_small_blockchain span {
+  color: white !important;
 }
 .span_solana {
   font-family: -webkit-pictograph;
   font-style: normal;
   font-weight: 900;
-  font-size: 30px;
+  font-size: 26px;
   line-height: 43px;
 
   color: #ffffff;
@@ -76,9 +80,9 @@
   font-family: -webkit-pictograph;
   font-style: normal;
   font-weight: 900;
-  font-size: 27px;
+  font-size: 25px;
   line-height: 38px;
-margin-left: 5px;
+  margin-left: 5px;
   color: #ffffff;
   letter-spacing: 1px;
 }
@@ -86,7 +90,7 @@ margin-left: 5px;
   font-family: -webkit-pictograph;
   font-style: normal;
   font-weight: 900;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 29px;
   /* identical to box height */
   margin-left: 16px;
@@ -137,29 +141,32 @@ margin-left: 5px;
   .btn_buy {
     margin-left: 10%;
   }
-
 }
 
 @media (max-width: 1700px) {
   .text_must_own,
   .text_to_access,
-  .text_terminal,
-  .text_wallet_tracker {
+  .text_terminal {
     font-size: 22px;
   }
   .text_lavish_whale {
     font-size: 22px;
+  }
+  .text_wallet_tracker {
+    font-size: 13px;
   }
 }
 @media (max-width: 1550px) {
   .text_must_own,
   .text_to_access,
-  .text_terminal,
-  .text_wallet_tracker {
+  .text_terminal {
     font-size: 18px;
   }
   .text_lavish_whale {
     font-size: 18px;
+  }
+  .text_wallet_tracker {
+    font-size: 12px;
   }
   .img_nft {
     width: 115px;
@@ -172,6 +179,9 @@ margin-left: 5px;
     width: 90px;
     height: 90px;
   }
+  .text_wallet_tracker {
+    font-size: 10px;
+  }
 }
 @media (max-width: 1370px) {
   .img_nft {
@@ -180,14 +190,13 @@ margin-left: 5px;
   }
 }
 @media (max-width: 1280px) {
-  .text_header_grp{
+  .text_header_grp {
     margin-bottom: 10px;
     margin-left: 10%;
   }
-   .nft_grp{
+  .nft_grp {
     margin-left: 10%;
-
-   }
+  }
   .text_must_own,
   .text_to_access,
   .text_terminal,
@@ -199,7 +208,8 @@ margin-left: 5px;
   }
 }
 @media (max-width: 960px) {
-  .text_header_grp,.nft_grp {
+  .text_header_grp,
+  .nft_grp {
     margin-bottom: 10px;
     margin-left: 5%;
   }

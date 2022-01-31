@@ -15,13 +15,13 @@ const Home = () => {
       <div className="container_home">
         <br />
         <br />
-        <Grid container >
+        <Grid container spacing={4} >
           <Grid item xs={6} md={4} lg={2} >
             <div className="logo_position">
             <img className="img_logo" src={logo} />
             </div>
           </Grid>
-          <Grid item xs={6} md={4} lg={2}>
+          <Grid item xs={6} md={4} lg={1}>
             <div className="text_wallet_tracker">WALLET TRACKER</div>
           </Grid>
           <Grid item xs={12} md={12} lg={6}>
