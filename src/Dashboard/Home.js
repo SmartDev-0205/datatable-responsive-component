@@ -15,7 +15,7 @@ const Home = () => {
       <div className="container_home">
         <br />
         <br />
-        <Grid container spacing={4} >
+        <Grid container >
           <Grid item xs={6} md={4} lg={2} >
             <div className="logo_position">
             <img className="img_logo" src={logo} />
