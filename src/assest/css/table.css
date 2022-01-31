@@ -20,9 +20,7 @@
   background-color: rgba(46, 44, 44, 0.682) !important;
   color: white !important;
 }
-.gPLhoV {
-  border-radius: 20%!important;
-}
+
 .hNeTsL {
   color: white !important;
   font-size: 18px !important;
@@ -59,9 +57,12 @@
 }
 .table_left {
   border-radius: 30px;
+  padding: 30px;
 }
 .table_right {
   border-radius: 30px;
+  padding: 30px;
+
 }
 .spinnner1 {
   position: absolute;
