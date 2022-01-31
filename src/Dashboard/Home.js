@@ -7,6 +7,7 @@ import nft3 from "../assest/img/NFT3.png";
 import nft4 from "../assest/img/NFT4.png";
 import Solana_logo from "../assest/img/Solana_logo.png";
 import Vector from "../assest/img/Vector.png";
+import Vector1 from "../assest/img/Vector1.png";
 
 const Home = () => {
   return (
@@ -26,7 +27,7 @@ const Home = () => {
           <Grid item xs={12} md={12} lg={6}>
             <Grid container>
               <Grid item xs={12}>
-                <Grid container justifyContent="center">
+                <Grid container   >
                   <div className="text_header_grp">
                     <div className="text_must_own">MUST OWN A</div>&nbsp;&nbsp;
                     <div className="text_lavish_whale">
@@ -41,7 +42,8 @@ const Home = () => {
               <br />
 
               <Grid item xs={12}>
-                <Grid container justifyContent="center">
+                  <div className="nft_grp">
+                <Grid container >
                   <Grid item xs={12} sm={4} lg={4}>
                     <img className="img_nft" src={nft1} />
                     <img className="img_nft" src={nft2} />
@@ -58,6 +60,7 @@ const Home = () => {
                     <img className="img_nft" src={nft4} />
                   </Grid>
                 </Grid>
+                  </div>
               </Grid>
             </Grid>
           </Grid>
@@ -65,25 +68,27 @@ const Home = () => {
         <br /> <br /> <br />
         <div style={{ marginLeft: "5%" }}>
           <Grid container>
-            <Grid item xs={12} md={8} lg={6}>
+            <Grid item xs={12} md={8}   lg={6}>
               <div className="text_big_nft">THE NFT</div>
               <br />
               <div className="text_big_terminal">TERMINAL</div>
               <br />
               <div className="text_small_blockchain">
-                Building the most powerful NFT investment tools on the Solana
-                Blockchain
+                Building the most powerful NFT investment tools on the Solana<br/>
+               <span>Blockchain</span> 
               </div>
               <br />
               <br /> <br /> <br />
               <button className="connect_wallet">Connect Wallet</button>
+              <br /> <br /> <br />
+              <br /> <br /> <br />
             </Grid>
             <Grid item xs={12} md={4} lg={6} style={{ overflow: "hidden" }}>
               <div className="solona_grp">
                 <img src={Solana_logo} width="45px" height="28px"></img>&nbsp;
                 <span className="span_solana">Solana</span>&nbsp;&nbsp;
                 <span className="span_sol">SOL</span>
-                <div className="div_price">$ 66,623.50</div>
+                <div className="div_price">$ 66,623.50<img src={Vector1} width="19px" height="12px"/></div>
               </div>
               <img src={Vector}  className="img_vector"></img>&nbsp;
             </Grid>
