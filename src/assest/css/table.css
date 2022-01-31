@@ -65,12 +65,12 @@
 }
 .spinnner1 {
   position: absolute;
-  top: 50%;
+  top: 150%;
   right: 20%;
 }
 .spinnner {
   position: absolute;
-  top: 50%;
+  top: 150%;
   left: 20%;
 }
 .container-dashboard{
@@ -90,12 +90,12 @@
   }
 }@media (max-width: 600px) {
   .spinnner1 {
-    top: 190%;
+    top: 290%;
     right: 50%;
   }
   .spinnner {
     position: absolute;
-    top: 90%;
+    top: 190%;
     left: 30%;
   }
 }

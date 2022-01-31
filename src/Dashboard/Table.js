@@ -17,6 +17,7 @@ import { TailSpin } from "react-loader-spinner";
 import "../assest/css/table.css";
 import TopData from "./TopData";
 import Header from "./Header";
+import Home from "./Home";
 createTheme("solarized", {
   text: {
     primary: "white",
@@ -166,7 +167,9 @@ const Table = () => {
     },
   ]
   return (
+    <>
     <div className="container-dashboard" >
+      <Home/>
       <br />
 	<Header/>
 	<br />
@@ -254,12 +257,13 @@ const Table = () => {
             </Card>
           </Grid>
         )}
-        <Grid item xs={12} md={1} lg={2}></Grid>
-        <Grid item xs={12} md={5} lg={4} className="table_right">
+        <Grid item xs={12} md={2} lg={2}></Grid>
+        <Grid item xs={12} md={4} lg={4} className="table_right">
           <TopData />
         </Grid>
       </Grid>
     </div>
+    </>
   );
 };
 export default Table;
