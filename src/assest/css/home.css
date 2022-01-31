@@ -1,5 +1,6 @@
 .container_home {
   height: 100%;
+  background-color: black;
 }
 .text_wallet_tracker {
   font-family: Lato;
@@ -19,9 +20,8 @@
 }
 .img_vector {
   border-radius: 2.57301px;
-  transform: rotate(-6.79deg);
-  position: absolute;
-  right: 30px;
+  width: 100%;
+ 
 }
 .text_lavish_whale {
   font-size: 24px;
@@ -49,7 +49,7 @@
   color: #fbfbfb;
 }
 .solona_grp {
-  margin-left: 50%;
+  margin-left: 40%;
 }
 .text_small_blockchain {
   font-family: Lato;
@@ -101,46 +101,18 @@
   width: 100px;
   height: 100px;
 }
-
-.btn_buy {background-image: linear-gradient(to right, #00d2ff 0%, #3a7bd5  51%, #00d2ff  100%)}
 .btn_buy {
-   padding: 15px 10px;
-   text-align: center;
-   text-transform: uppercase;
-   transition: 0.5s;
-   background-size: 200% auto;
-   color: white;            
-   box-shadow: 0 0 20px #eee;
-   border-radius: 10px;
-   display: block;
- }
+  background: #ffffff;
+  border-radius: 76px;
+  padding: 10px 25px;
+}
+.connect_wallet {
+  background: #ffffff;
+  border-radius: 76px;
+  padding: 15px 45px;
 
- .btn_buy:hover {
-   background-position: right center; /* change the direction of the change here */
-   color: #fff;
-   text-decoration: none;
- }
+}
 
- .connect_wallet {background-image: linear-gradient(to right, #00d2ff 0%, #3a7bd5  51%, #00d2ff  100%)}
- .connect_wallet {
-    margin: 10px;
-    padding: 15px 45px;
-    text-align: center;
-    text-transform: uppercase;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: white;            
-    box-shadow: 0 0 20px #eee;
-    border-radius: 10px;
-    display: block;
-  }
-
-  .connect_wallet:hover {
-    background-position: right center; /* change the direction of the change here */
-    color: #fff;
-    text-decoration: none;
-  }
- 
 .MuiGrid-justify-content-xs-center {
   margin-left: -4%;
 }
@@ -219,11 +191,11 @@
   }
 }
 @media (max-width: 960px) {
-  .img_vector {
+  /* .img_vector {
     position: absolute;
     top: 48%;
     right: -10%;
-  }
+  } */
 }
 @media (max-width: 900px) {
   .text_must_own,
@@ -234,21 +206,27 @@
   }
 }
 @media (max-width: 660px) {
-  .img_vector {
+  /* .img_vector {
     position: absolute;
     top: 80%;
     right: -10%;
-  }
+  } */
 }
 @media (max-width: 600px) {
   .img_nft {
     width: 210px;
     height: 150px;
   }
+  .text_big_nft,.text_big_terminal{
+    font-size: 70px;
+  }
 }
 @media (max-width: 500px) {
   .img_logo {
     width: 150px;
+  }
+  .text_big_nft,.text_big_terminal{
+    font-size: 60px;
   }
   .text_must_own,
   .text_to_access,
@@ -272,9 +250,22 @@
     margin-bottom: 10px;
     margin-left: 30%;
   }
-  .img_vector {
+  /* .img_vector {
     position: absolute;
     top: 85%;
     right: -10%;
+  } */
+}
+@media (max-width: 390px) {
+  .img_nft {
+    width: 300px;
   }
+  .text_big_nft,.text_big_terminal{
+    font-size: 50px;
+  }
+  /* .img_vector {
+    position: absolute;
+    top: 185%;
+    right: -35%;
+  } */
 }

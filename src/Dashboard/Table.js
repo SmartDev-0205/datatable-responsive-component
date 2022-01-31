@@ -104,12 +104,12 @@ const Table = () => {
   const columns = [
     {
       name: "Buyer",
-      selector: ()=>{
-        return "buyer"
+      selector: () => {
+        return "buyer";
       },
       cell: (selector, k) => [
         <select
-          key = {k}
+          key={k}
           style={{
             backgroundColor: "transparent",
             border: "none",
@@ -118,24 +118,26 @@ const Table = () => {
           }}
         >
           {selector.buyer.map((data, key) => (
-            <option key={key} style={{ color: "black" }}>{data}</option>
+            <option key={key} style={{ color: "black" }}>
+              {data}
+            </option>
           ))}
-        </select>
+        </select>,
       ],
       sortable: true,
     },
     {
       name: "type",
-      selector: ()=>{"type"},
-      cell: (selector, k) => [
-        <div key={k}>{selector.type}</div>
-      ],
+      selector: () => {
+        "type";
+      },
+      cell: (selector, k) => [<div key={k}>{selector.type}</div>],
       sortable: true,
     },
     {
       name: "Item",
-      selector: ()=>"Item",
-      cell: selector => (
+      selector: () => "Item",
+      cell: (selector) => (
         <div style={{ display: "flex" }}>
           <img
             src={selector.Item[0]}
@@ -151,36 +153,27 @@ const Table = () => {
     },
     {
       name: "price",
-      selector: ()=>"price",
-      cell: (selector, k) => [
-        <div key={k}>{selector.price}</div>
-      ],
+      selector: () => "price",
+      cell: (selector, k) => [<div key={k}>{selector.price}</div>],
       sortable: true,
     },
     {
       name: "time",
-      selector: ()=>"time",
-      cell: (selector, k) => [
-        <div key={k}>{selector.time}</div>
-      ],
+      selector: () => "time",
+      cell: (selector, k) => [<div key={k}>{selector.time}</div>],
       sortable: true,
     },
-  ]
+  ];
   return (
     <>
-    <div className="container-dashboard" >
-      <Home/>
+      <Home />
       <br />
-	<Header/>
-	<br />
-
+      <Header />
+      <br />
       <Grid container>
         {flag == "true" ? (
           <Grid item xs={12} md={6} className="table_left">
-            <div
-              className="spinnner"
-           
-            >
+            <div className="spinnner">
               <TailSpin
                 heigth="100"
                 width="100"
@@ -192,7 +185,10 @@ const Table = () => {
         ) : (
           <Grid item xs={12} md={6} lg={6} className="table_left">
             <Card
-              style={{ background: "rgba(46, 44, 44, 0.682)", padding: "10px" }}
+              style={{
+                background: "rgba(46, 44, 44, 0.682)",
+                padding: "10px",
+              }}
             >
               <br />
 
@@ -203,7 +199,7 @@ const Table = () => {
                 <Grid item item xs={6} sm={3} lg={2}>
                   <FormControl fullWidth variant="outlined" size="small">
                     <InputLabel htmlFor="searchByName" className="search-label">
-                     Item
+                      Item
                     </InputLabel>
                     <OutlinedInput
                       onChange={handleSearchChange}
@@ -216,7 +212,7 @@ const Table = () => {
                 <Grid item item xs={6} sm={3} lg={2}>
                   <FormControl fullWidth variant="outlined" size="small">
                     <InputLabel htmlFor="searchByName" className="search-label">
-                     Price
+                      Price
                     </InputLabel>
                     <OutlinedInput
                       onChange={handleSearchChange1}
@@ -262,7 +258,6 @@ const Table = () => {
           <TopData />
         </Grid>
       </Grid>
-    </div>
     </>
   );
 };

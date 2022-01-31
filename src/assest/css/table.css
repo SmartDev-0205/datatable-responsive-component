@@ -83,6 +83,18 @@
   background: rgb(69, 101, 241)!important;
 
 }
+@media (max-width: 1260px) {
+  .spinnner1 {
+    top: 290%;
+    right: 50%;
+  }
+  .spinnner {
+    position: absolute;
+    top: 190%;
+    left: 30%;
+  }
+}
+
 @media (max-width: 960px) {
   .spinnner1 {
     top: 150%;
