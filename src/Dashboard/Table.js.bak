@@ -83,7 +83,7 @@ const Table = () => {
     if (data.inited === false) {
       requestData();
     } else {
-      const timer = setTimeout(requestData, 10000);
+      const timer = setTimeout(requestData, 1000);
       return () => clearTimeout(timer);
     }
   }, [time, data.item, data.price, data.time]);
