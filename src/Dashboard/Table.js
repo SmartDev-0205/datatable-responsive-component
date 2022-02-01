@@ -117,7 +117,7 @@ const Table = () => {
           ))}
         </select>,
       ],
-      sortable: true,
+      // sortable: true,
     },
     {
       name: "type",
@@ -125,7 +125,7 @@ const Table = () => {
         "type";
       },
       cell: (selector, k) => [<div key={k}>{selector.type}</div>],
-      sortable: true,
+      // sortable: true,
     },
     {
       name: "Item",
@@ -142,18 +142,17 @@ const Table = () => {
           <span>{selector.item[1]}</span>
         </div>
       ),
-      sortable: true,
+      // sortable: true,
     },
     {
       name: "price",
       selector: () => "price",
       cell: (selector, k) => [<div key={k}>{selector.price}</div>],
-      sortable: true,
+      // sortable: true,
     },
     {
       name: "time",
-      selector: () => "time",
-      cell: (selector, k) => [<div key={k}>{selector.time}</div>],
+      selector: "time",
       sortable: true,
     },
   ];
@@ -242,7 +241,7 @@ const Table = () => {
                 pagination
                 striped
                 theme="solarized"
-                defaultSortAsc={false}
+                defaultSortAsc={true}
               />
             </Card>
           </Grid>
