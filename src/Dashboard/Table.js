@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useMemo } from "react";
 
-import tableData from "../assest/data/common";
 import DataTable, { createTheme } from "react-data-table-component";
 import Card from "@material-ui/core/Card";
 import SortIcon from "@material-ui/icons/ArrowDownward";
@@ -12,12 +11,14 @@ import {
   InputLabel,
   OutlinedInput,
 } from "@material-ui/core";
-// import Search from "@material-ui/icons/Search";
 import { TailSpin } from "react-loader-spinner";
 import "../assest/css/table.css";
 import TopData from "./TopData";
 import Header from "./Header";
 import Home from "./Home";
+
+import WhaleFeed from "../assest/mockup/whalefeed.json";
+
 createTheme("solarized", {
   text: {
     primary: "white",
@@ -35,67 +36,59 @@ createTheme("solarized", {
   },
 });
 const Table = () => {
-  const [data, setData] = useState(tableData);
-  const [category, setCategory] = useState(new Set());
+  const [data, setData] = useState({
+    inited:false,
+    provider: [],
+    count: 0,
+    item: "",
+    price: "",
+    time: "",
+  });
+  
+  const [time, setTime] = useState(+new Date());
   const [flag, setFlag] = useState("false");
-  const [search, setSearch] = useState(data);
-  const [select, setSelect] = useState(data);
 
-  const handleSearchChange = (e) => {
-    if (data.length === 0) return;
-    const value = e.target.value;
-
-    const newFilter = [...select].filter(
-      (val) =>
-        val.Item[1].toLowerCase().includes(value.toLowerCase()) ||
-        String(val.Item[1]).toLowerCase().includes(value.toLowerCase())
-    );
-
-    setSearch(newFilter);
+  const onFilter = (field) => (e) => {
+    setData({ ...data, inited:false, [field]: e.target.value });
   };
-  const handleSearchChange1 = (e) => {
-    if (data.length === 0) return;
-    const value = e.target.value;
 
-    const newFilter = [...select].filter(
-      (val) =>
-        val.price.toLowerCase().includes(value.toLowerCase()) ||
-        String(val.price).toLowerCase().includes(value.toLowerCase())
-    );
+  const requestData = async () => {
+    const limit = 10;
+    const filteredData = [];
+    let regexpItem = data.item && new RegExp(data.item, 'i');
+    let regexpPrice = data.price && new RegExp(data.price, 'i');
+    let regexpTime = data.time && new RegExp(data.time, 'i');
+    for (let i of WhaleFeed) {
+      if (regexpItem && i.item[1].match(regexpItem) === null) continue;
+      if (regexpPrice && i.price.match(regexpPrice) === null) continue;
+      if (regexpTime && i.time.match(regexpTime) === null) continue;
+      filteredData.push(i);
+    }
 
-    setSearch(newFilter);
+    if (data.count * limit > filteredData.length - 10) {
+      data.count = 0;
+    } else {
+      data.count++;
+    }
+    let start = data.count * limit;
+    const end = start + limit;
+    const tmp = filteredData.slice(start, end);
+    setData({ ...data, inited:true, count: data.count, provider: tmp });
+    setTime(+new Date());
   };
-  const handleSearchChange2 = (e) => {
-    if (data.length === 0) return;
-    const value = e.target.value;
-
-    const newFilter = [...select].filter(
-      (val) =>
-        val.time.toLowerCase().includes(value.toLowerCase()) ||
-        String(val.time).toLowerCase().includes(value.toLowerCase())
-    );
-
-    setSearch(newFilter);
-  };
-  // useEffect(() => {
-  //   if (data.length > 0) {
-  //     let field = new Set();
-
-  //     data.map((e) => field.add(e.category));
-  //     setCategory(field);
-  //   }
-  // }, [data]);
 
   useEffect(() => {
-    setFlag("true");
-    setData(tableData);
-    setTimeout(() => {
-      setFlag("false");
-    }, 700);
-  }, [tableData]);
+    if (data.inited===false) {
+      requestData();
+    } else {
+      const timer = setTimeout(requestData, 10000);
+      return () => clearTimeout(timer);
+    }
+  }, [time, data.item, data.price, data.time]);
+
   const Rendering = () => {
     setFlag("true");
-    setData(tableData);
+    requestData();
     setTimeout(() => {
       setFlag("false");
     }, 700);
@@ -136,17 +129,17 @@ const Table = () => {
     },
     {
       name: "Item",
-      selector: () => "Item",
+      selector: () => "item",
       cell: (selector) => (
         <div style={{ display: "flex" }}>
           <img
-            src={selector.Item[0]}
+            src={selector.item[0]}
             width="35"
             height="35"
             className="avatar_img"
           />
           &nbsp; &nbsp;
-          <span>{selector.Item[1]}</span>
+          <span>{selector.item[1]}</span>
         </div>
       ),
       sortable: true,
@@ -202,7 +195,7 @@ const Table = () => {
                       Item
                     </InputLabel>
                     <OutlinedInput
-                      onChange={handleSearchChange}
+                      onChange={onFilter("item")}
                       id="searchByName"
                       className="searchByName"
                       labelWidth={60}
@@ -215,7 +208,7 @@ const Table = () => {
                       Price
                     </InputLabel>
                     <OutlinedInput
-                      onChange={handleSearchChange1}
+                      onChange={onFilter("price")}
                       id="searchByName"
                       className="searchByName"
                       labelWidth={60}
@@ -228,7 +221,7 @@ const Table = () => {
                       List
                     </InputLabel>
                     <OutlinedInput
-                      onChange={handleSearchChange2}
+                      onChange={onFilter("time")}
                       id="searchByName"
                       className="searchByName"
                       labelWidth={60}
@@ -243,7 +236,7 @@ const Table = () => {
               </Grid>
               <DataTable
                 columns={columns}
-                data={search}
+                data={data.provider}
                 defaultSortField="title"
                 sortIcon={<SortIcon />}
                 pagination

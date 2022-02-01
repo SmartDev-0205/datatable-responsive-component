@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-import tableData from "../assest/data/top";
 import DataTable, { createTheme } from "react-data-table-component";
 import Card from "@material-ui/core/Card";
 import SortIcon from "@material-ui/icons/ArrowDownward";
@@ -9,6 +8,8 @@ import AutorenewIcon from "@material-ui/icons/Autorenew";
 import { Grid } from "@material-ui/core";
 import { TailSpin } from "react-loader-spinner";
 import "../assest/css/table.css";
+import WhaleFeed from "../assest/mockup/whalefeed.json";
+
 createTheme("solarized", {
   text: {
     primary: "white",
@@ -26,68 +27,53 @@ createTheme("solarized", {
   },
 });
 const TopData = () => {
-  const [data, setData] = useState(tableData);
-  const [category, setCategory] = useState(new Set());
+  const [data, setData] = useState({
+    inited:false,
+    provider: [],
+    count: 0,
+    item: "",
+    price: "",
+    time: "",
+  });
+  const [time, setTime] = useState(+new Date());
   const [flag, setFlag] = useState("false");
-  const [search, setSearch] = useState(data);
-  const [select, setSelect] = useState(data);
+  const requestData = async () => {
+    const limit = 10;
+    const filteredData = [];
+    let regexpItem = data.item && new RegExp(data.item, 'i');
+    let regexpPrice = data.price && new RegExp(data.price, 'i');
+    let regexpTime = data.time && new RegExp(data.time, 'i');
+    for (let i of WhaleFeed) {
+      if (regexpItem && i.item[1].match(regexpItem) === null) continue;
+      if (regexpPrice && i.price.match(regexpPrice) === null) continue;
+      if (regexpTime && i.time.match(regexpTime) === null) continue;
+      filteredData.push(i);
+    }
 
-  const handleSearchChange = (e) => {
-    if (data.length === 0) return;
-    const value = e.target.value;
-
-    const newFilter = [...select].filter(
-      (val) =>
-        val.Item[1].toLowerCase().includes(value.toLowerCase()) ||
-        String(val.Item[1]).toLowerCase().includes(value.toLowerCase())
-    );
-
-    setSearch(newFilter);
+    if (data.count * limit > filteredData.length - 10) {
+      data.count = 0;
+    } else {
+      data.count++;
+    }
+    let start = data.count * limit;
+    const end = start + limit;
+    const tmp = filteredData.slice(start, end);
+    setData({ ...data, inited:true, count: data.count, provider: tmp });
+    setTime(+new Date());
   };
-  const handleSearchChange1 = (e) => {
-    if (data.length === 0) return;
-    const value = e.target.value;
-
-    const newFilter = [...select].filter(
-      (val) =>
-        val.price.toLowerCase().includes(value.toLowerCase()) ||
-        String(val.price).toLowerCase().includes(value.toLowerCase())
-    );
-
-    setSearch(newFilter);
-  };
-  const handleSearchChange2 = (e) => {
-    if (data.length === 0) return;
-    const value = e.target.value;
-
-    const newFilter = [...select].filter(
-      (val) =>
-        val.time.toLowerCase().includes(value.toLowerCase()) ||
-        String(val.time).toLowerCase().includes(value.toLowerCase())
-    );
-
-    setSearch(newFilter);
-  };
-  // useEffect(() => {
-  //   if (data.length > 0) {
-  //     let field = new Set();
-
-  //     data.map((e,key) => field.add(e.category));
-
-  //     setCategory(field);
-  //   }
-  // }, [data]);
-
   useEffect(() => {
-    setFlag("true");
-    setData(tableData);
-    setTimeout(() => {
-      setFlag("false");
-    }, 700);
-  }, [tableData]);
+    if (data.inited===false) {
+      requestData();
+    } else {
+      const timer = setTimeout(requestData, 10000);
+      return () => clearTimeout(timer);
+    }
+  }, [time]);
+
+
   const Rendering = () => {
     setFlag("true");
-    setData(tableData);
+    requestData();
     setTimeout(() => {
       setFlag("false");
     }, 700);
@@ -95,10 +81,10 @@ const TopData = () => {
 
   const columns = [
     {
-     selector: ()=>"Item",
-      cell: selector => (
+      selector: () => "item",
+      cell: (selector) => (
         <img
-          src={selector.Item[0]}
+          src={selector.item[0]}
           width="35"
           height="35"
           className="avatar_img"
@@ -107,17 +93,13 @@ const TopData = () => {
       sortable: true,
     },
     {
-     selector: ()=>"topbuyer",
-     cell: (selector, k) => [
-      <div key={k}>{selector.topbuyer}</div>
-    ],
+      selector: () => "buyer",
+      cell: (selector, k) => [<div key={k}>{selector.buyer[0]}</div>],
       sortable: true,
     },
     {
-     selector: ()=>"price",
-     cell: (selector, k) => [
-      <div key={k}>{selector.price}</div>
-    ],
+      selector: () => "price",
+      cell: (selector, k) => [<div key={k}>{selector.price}</div>],
       sortable: true,
     },
   ];
@@ -146,7 +128,7 @@ const TopData = () => {
           </Grid>
           <DataTable
             columns={columns}
-            data={search}
+            data={data.provider}
             defaultSortField="title"
             sortIcon={<SortIcon />}
             pagination
