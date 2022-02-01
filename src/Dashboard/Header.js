@@ -68,7 +68,7 @@ export default function Header() {
             ></img>
             <div>
               <div className="div_name">{data.provider[data.rand]?.item[1]}</div>
-              <div className="div_price">{data.provider[data.rand]?.price}</div>
+              <div className="div_price">{data.provider[data.rand]?.price.slice(0,6)+"..."}</div>
             </div>
           </div>
         </Grid>
@@ -77,7 +77,7 @@ export default function Header() {
             <img className="header_img" src={data.provider[data.rand+1]?.item[0]}></img>
             <div>
               <div className="div_name">{data.provider[data.rand+1]?.item[1]}</div>
-              <div className="div_price">{data.provider[data.rand+1]?.price}</div>
+              <div className="div_price">{data.provider[data.rand+1]?.price.slice(0,6)+"..."}</div>
             </div>
           </div>
         </Grid>
@@ -86,7 +86,7 @@ export default function Header() {
             <img className="header_img" src={data.provider[data.rand+2]?.item[0]}></img>
             <div>
               <div className="div_name">{data.provider[data.rand+2]?.item[1]}</div>
-              <div className="div_price">{data.provider[data.rand+2]?.price}</div>
+              <div className="div_price">{data.provider[data.rand+2]?.price.slice(0,6)+"..."}</div>
             </div>
           </div>
         </Grid>
@@ -95,7 +95,7 @@ export default function Header() {
             <img className="header_img" src={data.provider[data.rand+3]?.item[0]}></img>
             <div>
               <div className="div_name">{data.provider[data.rand+3]?.item[1]}</div>
-              <div className="div_price">{data.provider[data.rand+3]?.price}</div>
+              <div className="div_price">{data.provider[data.rand+3]?.price.slice(0,6)+"..."}</div>
             </div>
           </div>
         </Grid>

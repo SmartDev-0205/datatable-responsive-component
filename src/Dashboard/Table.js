@@ -37,27 +37,28 @@ createTheme("solarized", {
 });
 const Table = () => {
   const [data, setData] = useState({
-    inited:false,
+    inited: false,
     provider: [],
     count: 0,
     item: "",
     price: "",
     time: "",
   });
-  
+
   const [time, setTime] = useState(+new Date());
   const [flag, setFlag] = useState("false");
 
   const onFilter = (field) => (e) => {
-    setData({ ...data, inited:false, [field]: e.target.value });
+    setData({ ...data, inited: false, [field]: e.target.value });
   };
 
   const requestData = async () => {
     const limit = 1;
     const filteredData = [];
-    let regexpItem = data.item && new RegExp(data.item, 'i');
-    let regexpPrice = data.price && new RegExp(data.price, 'i');
-    let regexpTime = data.time && new RegExp(data.time, 'i');
+    const sortData=[];
+    let regexpItem = data.item && new RegExp(data.item, "i");
+    let regexpPrice = data.price && new RegExp(data.price, "i");
+    let regexpTime = data.time && new RegExp(data.time, "i");
     for (let i of WhaleFeed) {
       if (regexpItem && i.item[1].match(regexpItem) === null) continue;
       if (regexpPrice && i.price.match(regexpPrice) === null) continue;
@@ -65,23 +66,24 @@ const Table = () => {
       filteredData.push(i);
     }
 
-    if (data.count * limit > filteredData.length-10) {
+    if (data.count * limit > filteredData.length - 10) {
       data.count = 30;
     } else {
       data.count++;
     }
     let start = data.count * limit;
     const end = start + limit;
-    const tmp = filteredData.slice(0, end);
-    setData({ ...data, inited:true, count: data.count, provider: tmp });
+    sortData.push(filteredData.sort((a,b) => a.time - b.time));
+    const tmp = sortData[0].slice(0, end);
+    setData({ ...data, inited: true, count: data.count, provider: tmp });
     setTime(+new Date());
   };
 
   useEffect(() => {
-    if (data.inited===false) {
+    if (data.inited === false) {
       requestData();
     } else {
-      const timer = setTimeout(requestData, 10000);
+      const timer = setTimeout(requestData, 1000);
       return () => clearTimeout(timer);
     }
   }, [time, data.item, data.price, data.time]);
@@ -100,23 +102,8 @@ const Table = () => {
       selector: () => {
         return "buyer";
       },
-      cell: (selector, k) => [
-        <select
-          key={k}
-          style={{
-            backgroundColor: "transparent",
-            border: "none",
-            color: "white",
-            fontSize: "18px",
-          }}
-        >
-          {selector.buyer.map((data, key) => (
-            <option key={key} style={{ color: "black" }}>
-              {data}
-            </option>
-          ))}
-        </select>,
-      ],
+      cell: (selector, k) => [<div key={k}>{selector.buyer}</div>],
+
       // sortable: true,
     },
     {
