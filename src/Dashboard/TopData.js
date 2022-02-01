@@ -57,7 +57,7 @@ const TopData = () => {
     }
     let start = data.count * limit;
     const end = start + limit;
-    const tmp = filteredData.slice(start, end);
+    const tmp = filteredData.slice(1, 20);
     setData({ ...data, inited:true, count: data.count, provider: tmp });
     setTime(+new Date());
   };

@@ -53,7 +53,7 @@ const Table = () => {
   };
 
   const requestData = async () => {
-    const limit = 10;
+    const limit = 1;
     const filteredData = [];
     let regexpItem = data.item && new RegExp(data.item, 'i');
     let regexpPrice = data.price && new RegExp(data.price, 'i');
@@ -65,14 +65,14 @@ const Table = () => {
       filteredData.push(i);
     }
 
-    if (data.count * limit > filteredData.length - 10) {
-      data.count = 0;
+    if (data.count * limit > filteredData.length-10) {
+      data.count = 30;
     } else {
       data.count++;
     }
     let start = data.count * limit;
     const end = start + limit;
-    const tmp = filteredData.slice(start, end);
+    const tmp = filteredData.slice(0, end);
     setData({ ...data, inited:true, count: data.count, provider: tmp });
     setTime(+new Date());
   };
@@ -242,6 +242,7 @@ const Table = () => {
                 pagination
                 striped
                 theme="solarized"
+                defaultSortAsc={false}
               />
             </Card>
           </Grid>
